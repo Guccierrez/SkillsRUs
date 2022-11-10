@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ name: '', email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -14,7 +14,7 @@ function Signup(props) {
       variables: {
         email: formState.email,
         password: formState.password,
-        Name: formState.name,
+        name: formState.name,
         
       },
     });
@@ -40,9 +40,9 @@ function Signup(props) {
           <label htmlFor="firstName">Your Name:</label>
           <input
             placeholder="Name"
-            name="firstName"
-            type="firstName"
-            id="firstName"
+            name="name"
+            type="name"
+            id="name"
             onChange={handleChange}
           />
         </div>
