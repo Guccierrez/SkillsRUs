@@ -1,13 +1,21 @@
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
+  --primary: #2151A1;
+  --secondary: #EB1933;
+  --tertiary: #e7eae2;
   --light: #fafafa;
-  --dark: #272f32;
+  --dark: #0a0a0b;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
+
+
+colors{
+--blah: #FFFFFF;
+--blah2: #EB1933;
+--blah3: #2151A1;
+}
+
 
 * {
   box-sizing: border-box;
