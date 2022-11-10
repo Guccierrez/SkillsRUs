@@ -40,7 +40,7 @@ const typeDefs = gql`
     addSkill(skills: [ID]!): Skills
     updateSkill(_id: ID!, ): Skills
     login(email: String!, password: String!): Auth
-    
+    removeSkill:(id_: ID!): Skills
   }
 `;
 

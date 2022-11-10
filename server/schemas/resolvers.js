@@ -51,13 +51,7 @@ const resolvers = {
       return { token, user };
     },
     
-    // updateUser: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-    //   }
-
-    //   throw new AuthenticationError('Not logged in');
-    // },
+   
     addSkill: async (parent, { userId, skill }, context) => {
      
       if (context.user) {
