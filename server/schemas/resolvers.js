@@ -68,7 +68,7 @@ const resolvers = {
     addSkill: async (parent, args, context) => {
       if (context.user){
         
-              const skill = await Skill.create(args);
+              const skill =  (await Skill.create(args));
 
 
               return skill ;
