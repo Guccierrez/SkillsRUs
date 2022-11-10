@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Skill, Category,  } = require('../models');
+const { User, Skill, Category  } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -8,7 +8,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    skill: async (parent, { category, name }) => {
+    skills: async (parent, { category, name }) => {
       const params = {};
 
       if (category) {
@@ -44,6 +44,19 @@ const resolvers = {
    
   },
   Mutation: {
+
+    addCategory: async (parent, args, context) => {
+      if (context.user){
+        
+              const category = await Category.create(args);
+
+
+              return category ;
+
+      }
+      
+      throw new AuthenticationError('Not logged in');
+    },
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -51,37 +64,30 @@ const resolvers = {
       return { token, user };
     },
     
-    // updateUser: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return await User.findByIdAndUpdate(context.user._id, args, { new: true });
-    //   }
+   
+    addSkill: async (parent, args, context) => {
+      if (context.user){
+        
+              const skill = await Skill.create(args);
 
-    //   throw new AuthenticationError('Not logged in');
-    // },
-    addSkill: async (parent, { userId, skill }, context) => {
-     
+
+              return skill ;
+
+      }
+      
+      throw new AuthenticationError('Not logged in');
+    },
+
+    removeSkill: async (parent,  args, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
-          { _id: userId },
-          {
-            $addToSet: { skills: skill },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
+          { _id: context.user._id },
+          { $pull: { savedSills: {skillId: args.skillId} } },
+          { new: true }
         );
-      }},
-    // removeSkill: async (parent,  args, context) => {
-    //   if (context.user) {
-    //     return User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { savedSills: {skillId: args.skillId} } },
-    //       { new: true }
-    //     );
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     
     
     login: async (parent, { email, password }) => {

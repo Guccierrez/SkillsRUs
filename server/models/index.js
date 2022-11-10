@@ -1,6 +1,6 @@
 const User = require('./User');
-const Skills = require('./Skills');
+const Skill = require('./Skill');
 const Category = require('./Category');
 
 
-module.exports = { User, Skills, Category};
+module.exports = { User, Skill, Category};
