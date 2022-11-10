@@ -6,7 +6,11 @@ const typeDefs = gql`
     name: String!
   }
 
-  type Skills {
+  input CategoryInput {
+    name: String!
+  }
+
+  type Skill {
     _id: ID
     name: String!
     description: String
@@ -29,18 +33,18 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category!]
-    skills(category: ID, name: String): [Skills]
-    skill(_id: ID!): Skills
+    skills(category: ID, name: String): [Skill]
+    skill(_id: ID!): Skill
     user: User
   
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-    addSkill(skills: [ID]!): Skills
-    updateSkill(_id: ID!, ): Skills
+    addUser(name: String!, email: String!, password: String!): Auth
+    addSkill(name:String!, description: String, image:String, price:Float!, category: CategoryInput!): Skill
     login(email: String!, password: String!): Auth
-    removeSkill:(id_: ID!): Skills
+    removeSkill(skillId: ID): User
+    addCategory(category: ID, name:String!):Category
   }
 `;
 
