@@ -1,6 +1,8 @@
 import React from "react";
 import {
   Button,
+  Message,
+  Label,
   Checkbox,
   Form,
   Input,
@@ -29,6 +31,16 @@ const Profile = () => {
       />
     </Form.Group>
   </Form>
+  <Form success>
+    <Form.Input label='User description' placeholder='My name is.. and I offer...' />
+    <Message
+      success
+      header='Form Completed'
+      content="User Profile updated! Proceed to adding Skills/Services!"
+    />
+    <Button>Update Profile</Button>
+  </Form>
+
   <Form>
     <Form.Field inline>
       <label>Skill/Service</label>
@@ -41,6 +53,11 @@ const Profile = () => {
       <input />
     </Form.Field>
   </Form>
+  <Input labelPosition='right' type='text' placeholder='Amount'>
+    <Label basic>$</Label>
+    <input />
+    <Label>.00</Label>
+  </Input>
   <Button inverted color='olive'>
         Add it!
       </Button>
