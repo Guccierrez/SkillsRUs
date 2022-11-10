@@ -1,17 +1,4 @@
-:root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
-  --light: #fafafa;
-  --dark: #272f32;
-  --error: rgb(228, 46, 1);
-  --spacing-one: calc(1rem * 0.5);
-  --spacing-two: calc(1rem);
-}
 
-* {
-  box-sizing: border-box;
-}
 
 html,
 body {
