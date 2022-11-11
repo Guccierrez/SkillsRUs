@@ -212,8 +212,13 @@ input:focus {
 }
 
 ul {
+
   list-style-type: none;
   }
+
+
+
+
 
 @media screen and (max-width: 768px) {
   .card {

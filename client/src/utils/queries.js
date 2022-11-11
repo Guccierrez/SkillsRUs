@@ -39,32 +39,64 @@ export const QUERY_ALL_SKILLS = gql`
   }
 `;
 
-export const QUERY_CATEGORIES = gql`
-  {
-    categories {
+
+
+
+
+
+
+export const QUERY_SKILL = gql`
+  query Skill($id: ID!) {
+  skill(_id: $id) {
+    _id
+    category {
       _id
       name
     }
+    description
+    name
+    image
+    price
   }
+}
+`;
+
+
+
+
+
+export const QUERY_SKILLS = gql`
+ query Skills($category: ID, $name: String) {
+  skills(category: $category, name: $name) {
+    _id
+    category {
+      _id
+      name
+
+    }
+    description
+    image
+    name
+    price
+  }
+}
+`;
+
+export const QUERY_CATEGORIES = gql`
+ query Categories {
+  categories {
+    _id
+    name
+  }
+}
 `;
 
 export const QUERY_USER = gql`
-  {
-    user {
-      firstName
-      lastName
-      orders {
-        _id
-        purchaseDate
-        skills {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
-    }
+query User {
+  user {
+    _id
+    email
+    name
   }
+}
 `;
