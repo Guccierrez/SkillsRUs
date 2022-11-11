@@ -7,7 +7,6 @@ export const QUERY_SKILLS = gql`
       name
       description
       price
-      quantity
       image
       category {
         _id
@@ -31,7 +30,6 @@ export const QUERY_ALL_SKILLS = gql`
       name
       description
       price
-      quantity
       category {
         name
       }
@@ -61,7 +59,6 @@ export const QUERY_USER = gql`
           name
           description
           price
-          quantity
           image
         }
       }
