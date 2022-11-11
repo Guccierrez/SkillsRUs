@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Skill, Category } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -14,9 +14,9 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-  await Product.deleteMany();
+  await Skill.deleteMany();
 
-  const products = await Product.insertMany([
+  const skills = await Skill.insertMany([
     {
       name: 'Fabians Concrete',
       description:
@@ -67,47 +67,43 @@ db.once('open', async () => {
     },
   ]);
 
-  console.log('products seeded');
+  console.log("Skills seeded");
 
   await User.deleteMany();
 
   await User.create({
-    firstName: 'Austin',
-    lastName: 'Post',
+   name: 'Austin',
     email: 'posty65841@gmail.com',
     password: 'password12345',
     orders: [
       {
-        products: [products[2]._id, products[4]._id]
+        skills: [skills[2]._id, skills[4]._id]
       }
     ]
   });
 
   await User.create({
-    firstName: 'Sid',
-    lastName: 'Muratee',
+   name: 'Sid',
     email: 'muratees@yahoo.com',
     password: 'password12345',
     orders: [
       {
-        products: [products[1]._id, products[5]._id]
+        skills: [skills[1]._id, skills[5]._id]
       }
     ]
   });
   await User.create({
-    firstName: 'Fabian',
-    lastName: 'Gutierrez',
+   name: 'Fabian',
     email: 'fabiangutierrez580@gmail.com',
     password: 'password12345',
     orders: [
       {
-        products: [products[0]._id, products[3]._id]
+        skills: [skills[0]._id, skills[3]._id]
       }
     ]
   });
   await User.create({
-    firstName: 'Test',
-    lastName: 'McTest',
+   name: 'Test',
     email: 'test@test.com',
     password: 'password12345',
   });
