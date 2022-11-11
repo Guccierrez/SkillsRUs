@@ -211,6 +211,10 @@ input:focus {
   color: var(--error);
 }
 
+ul {
+  list-style-type: none;
+  }
+
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;
