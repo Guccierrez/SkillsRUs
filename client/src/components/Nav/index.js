@@ -1,27 +1,44 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import {
+  Button,
+  Icon,
+  Message,
+  Label,
+  Checkbox,
+  Form,
+  Input,
+  Radio,
+  Select,
+  TextArea,
+} from "semantic-ui-react";
 
 function Nav() {
-
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
+            <a href="/me">
+              <Button inverted color="blue">
+                Profile
+                </Button>
             </a>
           </li>
           <li className="mx-1">
-            <a href="/me">
-              Profile
+            <Link to="/orderHistory">
+              <Button inverted color="yellow">
+                Order History
+                </Button>
+           </Link>
+          </li>
+          <li className="mx-1" position="right">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/" onClick={() => Auth.logout()}>
+              <Button  inverted color="red">
+              Logout
+              </Button>
             </a>
           </li>
         </ul>
@@ -30,14 +47,10 @@ function Nav() {
       return (
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
+            <Link to="/signup">Signup</Link>
           </li>
           <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       );
@@ -48,14 +61,14 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag">💰</span>
+          <span role="img" aria-label="shopping bag">
+            💰
+          </span>
           SkillsRUs
         </Link>
       </h1>
 
-      <nav>
-        {showNavigation()}
-      </nav>
+      <nav>{showNavigation()}</nav>
     </header>
   );
 }
