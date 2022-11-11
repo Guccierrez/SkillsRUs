@@ -15,19 +15,20 @@ function ProductList() {
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   useEffect(() => {
+    console.log(data)
     if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
-        products: data.products,
+        skills: data.skills,
       });
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
+      data.skills.forEach((skill) => {
+        idbPromise('skills', 'put', skill);
       });
     } else if (!loading) {
-      idbPromise('products', 'get').then((products) => {
+      idbPromise('skills', 'get').then((skills) => {
         dispatch({
           type: UPDATE_PRODUCTS,
-          products: products,
+          skills: skills,
         });
       });
     }
@@ -39,7 +40,7 @@ function ProductList() {
     }
 
     return state.products.filter(
-      (product) => product.category._id === currentCategory
+      (skill) => skill.category._id === currentCategory
     );
   }
 
@@ -48,19 +49,19 @@ function ProductList() {
       <h2>Our Products:</h2>
       {state.products.length ? (
         <div className="flex-row">
-          {filterProducts().map((product) => (
+          {filterProducts().map((skill) => (
             <ProductItem
-              key={product._id}
-              _id={product._id}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              quantity={product.quantity}
+              key={skill._id}
+              _id={skill._id}
+              image={skill.image}
+              name={skill.name}
+              price={skill.price}
+              quantity={skill.quantity}
             />
           ))}
         </div>
       ) : (
-        <h3>You haven't added any products yet!</h3>
+        <h3>You haven't added any skills yet!</h3>
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
     </div>
