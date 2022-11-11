@@ -1,7 +1,7 @@
 :root {
-  --primary: #EB1933;
-  --secondary: #2151A1;
-  --tertiary: #ffffff;
+  --primary: #2151A1;
+  --secondary: #EB1933;
+  --tertiary: #e7eae2;
   --light: #fafafa;
   --dark: #0a0a0b;
   --error: rgb(228, 46, 1);
@@ -14,6 +14,11 @@ colors{
 --blah: #FFFFFF;
 --blah2: #EB1933;
 --blah3: #2151A1;
+}
+
+
+* {
+  box-sizing: border-box;
 }
 
 html,
