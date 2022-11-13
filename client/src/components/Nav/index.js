@@ -14,10 +14,15 @@ import {
   TextArea,
 } from "semantic-ui-react";
 
+
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
+
+  
+
+        
         <ul className="flex-row">
           <li className="mx-1">
             <a href="/me">
@@ -26,6 +31,16 @@ function Nav() {
                 </Button>
             </a>
           </li>
+
+          
+          <li className="mx-1">
+            <a href="/orderHistory">
+              <Button inverted color="red" >
+                view cart
+                </Button>
+            </a>
+          </li>
+
           <li className="mx-1">
             <Link to="/orderHistory">
               <Button inverted color="yellow">
