@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import {Button} from "semantic-ui-react";
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
@@ -93,13 +93,13 @@ function Detail() {
 
           <p>
             <strong>Price:</strong>${currentSkill.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
+            <Button onClick={addToCart}  color = "red">Add to Cart</Button>
+            <Button color = "red"
               disabled={!cart.find((p) => p._id === currentSkill._id)}
               onClick={removeFromCart}
             >
               Remove from Cart
-            </button>
+            </Button>
           </p>
 
           <img
