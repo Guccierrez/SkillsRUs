@@ -32,6 +32,7 @@ const Profile = () => {
     console.log(serviceInfo.serviceDescription)
     console.log(serviceInfo.amount)
     localStorage.setItem("serviceInfo", JSON.stringify(serviceInfo))
+    console.log("hello")
   }
 
 
