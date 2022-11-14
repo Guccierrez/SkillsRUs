@@ -57,6 +57,7 @@ function SkillList({profile, setProfile}) {
               name={skill?.name}
               price={skill?.price}
               quantity={skill?.quantity}
+              description={skill?.description}
             />
           ))}
         </div>
