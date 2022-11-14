@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { useStoreContext } from '../utils/GlobalState';
 import { UPDATE_SKILLS } from '../utils/actions';
+import ProfileCard from "../components/profileCard";
 
 
 
@@ -53,6 +54,7 @@ console.log(state.skills)
 
   return (
     <div>
+      
       <h1>Profile</h1>
       <Form>
         <Form.Group widths="equal">
@@ -159,7 +161,7 @@ console.log(state.skills)
 
       {currentUser ? (
           <div>
-
+                <ProfileCard>test</ProfileCard>
             <h2>{currentUser.firstName} {currentUser.lastName} </h2>
             <h2>{currentUser.description} </h2>
             <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
@@ -180,3 +182,5 @@ console.log(state.skills)
 };
 
 export default Profile;
+
+
