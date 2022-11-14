@@ -202,6 +202,7 @@ const Profile = ({ profile, setProfile }) => {
 
       {currentUser ? (
 
+
         <div>
           {/* <ProfileCard>test</ProfileCard> */}
           <h2>{currentUser.firstName} {currentUser.lastName} </h2>
