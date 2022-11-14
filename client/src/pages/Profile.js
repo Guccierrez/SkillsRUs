@@ -161,7 +161,7 @@ console.log(state.skills)
 
       {currentUser ? (
           <div>
-                <ProfileCard>test</ProfileCard>
+                {/* <ProfileCard>test</ProfileCard> */}
             <h2>{currentUser.firstName} {currentUser.lastName} </h2>
             <h2>{currentUser.description} </h2>
             <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
