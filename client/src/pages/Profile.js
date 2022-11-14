@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { useStoreContext } from '../utils/GlobalState';
 import { UPDATE_SKILLS } from '../utils/actions';
 import ProfileCard from "../components/profileCard";
+import SkillList from "../components/SkillList";
 import { ADD_SKILL } from "../utils/mutations";
 //import the mutation from your utils
 //import usemutation hook from apollo
@@ -79,6 +80,7 @@ const Profile = ({ profile, setProfile }) => {
 
   return (
     <div>
+      
 
       <h1>Profile</h1>
       <Form>
@@ -198,7 +200,8 @@ const Profile = ({ profile, setProfile }) => {
         <Icon name="dollar" />
         Add it!
         <Icon name="dollar" />
-      </Button>
+      </Button>'
+      <SkillList />
 
       {currentUser ? (
 
