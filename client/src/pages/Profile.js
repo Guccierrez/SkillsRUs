@@ -201,12 +201,14 @@ const Profile = ({ profile, setProfile }) => {
       </Button>
 
       {currentUser ? (
+
         <div>
           {/* <ProfileCard>test</ProfileCard> */}
           <h2>{currentUser.firstName} {currentUser.lastName} </h2>
           <h2>{currentUser.description} </h2>
           <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
           <h2>{currentUser.servicePrice}</h2>
+
 
         </div>
       ) : (
