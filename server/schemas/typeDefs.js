@@ -6,7 +6,6 @@ const typeDefs = gql`
     name: String!
   }
 
- 
 
   type Skill {
     _id: ID
@@ -21,8 +20,11 @@ const typeDefs = gql`
     _id: ID
     name: String!
     email: String!
+    skills: [Skill]
     
   }
+
+
 
   type Auth {
     token: ID

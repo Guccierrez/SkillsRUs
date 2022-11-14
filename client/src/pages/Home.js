@@ -1,15 +1,21 @@
 import React from "react";
-import ProductList from "../components/ProductList";
+import SkillList from "../components/SkillList";
 import CategoryMenu from "../components/CategoryMenu";
 import Cart from "../components/Cart";
 
-const Home = () => {
+
+const Home = (props) => {
   return (
+
     <div className="container">
       <CategoryMenu />
-      <ProductList />
+      <SkillList {...props}/>
       <Cart />
+  
     </div>
+
+
+
   );
 };
 

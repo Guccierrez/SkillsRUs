@@ -1,6 +1,6 @@
 import { reducer } from '../utils/reducers';
 import {
-  UPDATE_PRODUCTS,
+  UPDATE_SKILLS,
   ADD_TO_CART,
   UPDATE_CART_QUANTITY,
   REMOVE_FROM_CART,
@@ -12,7 +12,7 @@ import {
 } from '../utils/actions';
 
 const initialState = {
-  products: [],
+  skills: [],
   cart: [
     {
       _id: '1',
@@ -30,20 +30,20 @@ const initialState = {
   currentCategory: '1',
 };
 
-test('UPDATE_PRODUCTS', () => {
+test('UPDATE_SKILLS', () => {
   let newState = reducer(initialState, {
-    type: UPDATE_PRODUCTS,
-    products: [{}, {}]
+    type: UPDATE_SKILLS,
+    skills: [{}, {}]
   });
 
-  expect(newState.products.length).toBe(2);
-  expect(initialState.products.length).toBe(0);
+  expect(newState.skills.length).toBe(2);
+  expect(initialState.skills.length).toBe(0);
 });
 
 test('ADD_TO_CART', () => {
   let newState = reducer(initialState, {
     type: ADD_TO_CART,
-    product: { purchaseQuantity: 1 }
+    skill: { purchaseQuantity: 1 }
   });
 
   expect(newState.cart.length).toBe(3);
@@ -87,7 +87,7 @@ test('REMOVE_FROM_CART', () => {
 test('ADD_MULTIPLE_TO_CART', () => {
   let newState = reducer(initialState, {
     type: ADD_MULTIPLE_TO_CART,
-    products: [{}, {}]
+    skills: [{}, {}]
   });
 
   expect(newState.cart.length).toBe(4);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
@@ -39,6 +39,9 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [profile,setProfile] = useState ({})
+
+
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -48,7 +51,7 @@ function App() {
             <Routes>
               <Route 
                 path="/" 
-                element={<Home />} 
+                element={<Home  profile = {profile} setProfile = {setProfile}/>} 
               />
               <Route 
                 path="/login" 
@@ -67,7 +70,7 @@ function App() {
                 element={<OrderHistory />} 
               />
               <Route 
-                path="/products/:id" 
+                path="/skills/:id" 
                 element={<Detail />} 
               />
               <Route 
@@ -76,7 +79,7 @@ function App() {
               />
              <Route 
                 path="/me" 
-                element={<Profile />}
+                element={<Profile profile = {profile} setProfile = {setProfile}/>}
               />
             </Routes>
           </StoreProvider>

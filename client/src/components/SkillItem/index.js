@@ -4,8 +4,10 @@ import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import {currentSkill} from "../../pages/Detail";
+import {Button, Card} from "semantic-ui-react";
 
-function ProductItem(item) {
+function SkillItem(item) {
   const [state, dispatch] = useStoreContext();
 
   const {
@@ -13,6 +15,7 @@ function ProductItem(item) {
     name,
     _id,
     price,
+    
     quantity
   } = item;
 
@@ -33,28 +36,34 @@ function ProductItem(item) {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 }
+        skill: { ...item, purchaseQuantity: 1 }
       });
       idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
     }
   }
 
   return (
-    <div className="card px-1 py-1">
-      <Link to={`/products/${_id}`}>
-        <img
+    <div>
+    <Card style={{ width: '24rem',  margin:'2rem',height: '350px'}}>
+      <Link to={`/skills/${_id}`}>
+    <img
           alt={name}
           src={`/images/${image}`}
         />
-        <p>{name}</p>
       </Link>
-      {/* <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
-        <span>${price}</span>
-      </div> */}
-      <button onClick={addToCart}>Add to cart</button>
-    </div>
+    <Card.Content>
+      <Card.Header> <p>{name}</p></Card.Header>
+      <Card.Meta>
+      <span>${price}</span>
+      </Card.Meta>
+    </Card.Content>
+    <Card.Content extra>
+    <Button onClick={addToCart} inverted color="inverted red">Add to cart</Button>
+    </Card.Content>
+  </Card>
+   
+</div>
   );
 }
 
-export default ProductItem;
+export default SkillItem;

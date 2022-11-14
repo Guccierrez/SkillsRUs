@@ -7,7 +7,9 @@ import {
 } from '../../utils/actions';
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-
+import {
+  Button,
+} from "semantic-ui-react";
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
 
@@ -45,14 +47,16 @@ function CategoryMenu() {
     <div>
       <h2>Choose a Category:</h2>
       {categories.map((item) => (
-        <button
+        <Button  inverted color="blue"
           key={item._id}
           onClick={() => {
             handleClick(item._id);
           }}
         >
           {item.name}
-        </button>
+        </Button>
+
+
       ))}
     </div>
   );

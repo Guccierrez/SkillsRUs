@@ -67,12 +67,16 @@ db.once('open', async () => {
     },
   ]);
 
+
   console.log("Skills seeded");
+
 
   await User.deleteMany();
 
   await User.create({
+
    name: 'Austin',
+
     email: 'posty65841@gmail.com',
     password: 'password12345',
     orders: [
@@ -83,7 +87,9 @@ db.once('open', async () => {
   });
 
   await User.create({
+
    name: 'Sid',
+
     email: 'muratees@yahoo.com',
     password: 'password12345',
     orders: [
@@ -93,7 +99,9 @@ db.once('open', async () => {
     ]
   });
   await User.create({
+
    name: 'Fabian',
+
     email: 'fabiangutierrez580@gmail.com',
     password: 'password12345',
     orders: [
@@ -103,7 +111,9 @@ db.once('open', async () => {
     ]
   });
   await User.create({
+
    name: 'Test',
+
     email: 'test@test.com',
     password: 'password12345',
   });

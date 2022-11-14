@@ -28,7 +28,9 @@ const resolvers = {
     },
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
+        const user = await User.findById(context.user._id)
+        .populate ("skills")
+        .populate({
           path: 'skills',
           populate: 'category'
         });
@@ -68,9 +70,15 @@ const resolvers = {
     addSkill: async (parent, args, context) => {
       if (context.user){
         
+    
               const skill =  (await Skill.create(args));
-
-
+              console.log(skill._id);
+              const user = await  User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $addToSet: { skills: skill._id } },
+                { new: true }
+              );
+                console.log(user)
               return skill ;
 
       }
@@ -82,7 +90,7 @@ const resolvers = {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedSills: {skillId: args.skillId} } },
+          { $pull: { skills: {skillId: args.skillId} } },
           { new: true }
         );
       }

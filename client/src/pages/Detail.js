@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import {Button} from "semantic-ui-react";
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
-  UPDATE_PRODUCTS,
+  UPDATE_SKILLS,
 } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_SKILLS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
@@ -18,38 +18,38 @@ function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentProduct, setCurrentProduct] = useState({});
+  const [currentSkill, setCurrentSkill] = useState({});
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_SKILLS);
 
-  const { products, cart } = state;
+  const { skills, cart } = state;
 
   useEffect(() => {
     // already in global store
-    if (products.length) {
-      setCurrentProduct(products.find((product) => product._id === id));
+    if (skills.length) {
+      setCurrentSkill(skills.find((skill) => skill._id === id));
     }
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
+        type: UPDATE_SKILLS,
+        skills: data.skills,
       });
 
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
+      data.skills.forEach((skill) => {
+        idbPromise('skills', 'put', skill);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
+      idbPromise('skills', 'get').then((indexedSkills) => {
         dispatch({
-          type: UPDATE_PRODUCTS,
-          products: indexedProducts,
+          type: UPDATE_SKILLS,
+          skills: indexedSkills,
         });
       });
     }
-  }, [products, data, loading, dispatch, id]);
+  }, [skills, data, loading, dispatch, id]);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
@@ -66,45 +66,45 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: 1 },
+        skill: { ...currentSkill, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise('cart', 'put', { ...currentSkill, purchaseQuantity: 1 });
     }
   };
 
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
-      _id: currentProduct._id,
+      _id: currentSkill._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentProduct });
+    idbPromise('cart', 'delete', { ...currentSkill });
   };
 
   return (
     <>
-      {currentProduct && cart ? (
+      {currentSkill && cart ? (
         <div className="container my-1">
-          <Link to="/">← Back to Products</Link>
+          <Link to="/">← Back to Skills</Link>
 
-          <h2>{currentProduct.name}</h2>
+          <h2>{currentSkill.name}</h2>
 
-          <p>{currentProduct.description}</p>
+          <p>{currentSkill.description}</p>
 
           <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
+            <strong>Price:</strong>${currentSkill.price}{' '}
+            <Button onClick={addToCart}  color = "red">Add to Cart</Button>
+            <Button color = "red"
+              disabled={!cart.find((p) => p._id === currentSkill._id)}
               onClick={removeFromCart}
             >
               Remove from Cart
-            </button>
+            </Button>
           </p>
 
           <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
+            src={`/images/${currentSkill.image}`}
+            alt={currentSkill.name}
           />
         </div>
       ) : null}
