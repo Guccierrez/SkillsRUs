@@ -25,7 +25,16 @@ export const ADD_USER = gql`
 }
 `;
 
-
+export const ADD_SKILL =gql`
+ mutation AddSkill($name: String!, $price: Float!, $description: String ) {
+  addSkill(name: $name, price: $price, description: $description) {
+    description
+    name
+    price
+   
+  }
+}
+`;
 
 // export const QUERY_SKILL = gql`
 //   query Skill($id: ID!) {
