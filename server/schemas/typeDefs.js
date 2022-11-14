@@ -13,7 +13,7 @@ const typeDefs = gql`
     description: String
     image: String
     price: Float!
-    category: Category!
+    category: Category
   }
   
   type User {
@@ -32,7 +32,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    categories: [Category!]
+    categories: [Category]
     skills(category: ID, name: String): [Skill]
     skill(_id: ID!): Skill
     user: User
@@ -41,10 +41,10 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
-    addSkill(name:String!, description: String, image:String, price:Float!, category: ID!): Skill
+    addSkill(name:String!, description: String, image:String, price:Float!): Skill
     login(email: String!, password: String!): Auth
     removeSkill(skillId: ID): User
-    addCategory(category: ID, name:String!):Category
+    addCategory(category: ID, name:String):Category
   }
 `;
 

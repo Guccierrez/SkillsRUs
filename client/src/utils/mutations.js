@@ -26,11 +26,12 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_SKILL =gql`
- mutation AddSkill($name: String!, $price: Float!, $description: String, $category: ID!) {
-  addSkill(name: $name, price: $price, description: $description, category: $category) {
+ mutation AddSkill($name: String!, $price: Float!, $description: String ) {
+  addSkill(name: $name, price: $price, description: $description) {
     description
     name
     price
+   
   }
 }
 `;

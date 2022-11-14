@@ -5,7 +5,6 @@ import { UPDATE_SKILLS } from '../utils/actions';
 import ProfileCard from "../components/profileCard";
 import { ADD_SKILL } from "../utils/mutations";
 //import the mutation from your utils
-
 //import usemutation hook from apollo
 
 
@@ -27,16 +26,19 @@ import {
 const Profile = ({ profile, setProfile }) => {
   const [state, dispatch] = useStoreContext();
   console.log(state.skills)
-  
+
   // saving user profile information to local storage
   const [userInfo, setuserInfo] = useState({
     firstName: "",
     lastName: "",
+   
+  })
+
+  const [serviceInfo, setServiceInfo] = useState({
+    name: "",
+    price: parseInt(0),
     description: "",
-    name:"",
-    serviceDescription:"",
-    price:""
-    
+    // category:"636e78bab89b0b65cd19f8b0",
   })
   const [addSkill, { error }] = useMutation(ADD_SKILL);
   const currentUser = JSON.parse(localStorage.getItem("userInfo"))
@@ -46,26 +48,28 @@ const Profile = ({ profile, setProfile }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setuserInfo({ ...userInfo, [name]: value })
+    setServiceInfo({ ...serviceInfo, [name]: value })
   }
-
 
   const updateUserButton = async () => {
-    setProfile({...profile,...userInfo})
-    // const {name, price, serviceDescription} = userInfo
+    setProfile({ ...profile, ...userInfo })
+    const { name, price, serviceDescription } = userInfo
     localStorage.setItem("userInfo", JSON.stringify(userInfo))
   }
-  
-  const addSkillButton = async (e) =>{
-    
+
+
+
+
+  const addSkillButton = async (e) => {
     //fire off mutation hook here
     try {
-      const { userInfo } = await addSkill({
-        variables: { ...userInfo},
+      serviceInfo.price = parseInt(serviceInfo.price)
+      const { data } = await addSkill({
+        variables: { ...serviceInfo },
       });
     } catch (err) {
       console.error(err);
     }
-    
     // dispatch({
     //   type: UPDATE_SKILLS,
     //   skills: [...state.skills, {serviceName, serviceDescription, price}]
@@ -75,24 +79,24 @@ const Profile = ({ profile, setProfile }) => {
 
   return (
     <div>
-      
+
       <h1>Profile</h1>
       <Form>
         <Form.Group widths="equal">
           <Form.Input
             fluid
-            // name='firstName'
-            // value={userInfo.firstName}
-            // onChange={handleInputChange}
+            name='firstName'
+            value={userInfo.firstName}
+            onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-first-name"
             label="First name"
             placeholder="First name"
           />
           <Form.Input
             fluid
-            // name='lastName'
-            // value={userInfo.lastName}
-            // onChange={handleInputChange}
+            name='lastName'
+            value={userInfo.lastName}
+            onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-last-name"
             label="Last name"
             placeholder="Last name"
@@ -101,9 +105,9 @@ const Profile = ({ profile, setProfile }) => {
       </Form>
       <Form success>
         <Form.Input
-          // name='description'
-          // value={userInfo.description}
-          // onChange={handleInputChange}
+          name='description'
+          value={userInfo.description}
+          onChange={handleInputChange}
           label="User description"
           placeholder="Brief description of yourself and the service(s) you offer..."
         />
@@ -111,6 +115,9 @@ const Profile = ({ profile, setProfile }) => {
         <Button inverted color='blue' icon onClick={() => {
           updateUserButton()
         }}>
+
+
+
 
           <Icon name="add circle" />
           Update User
@@ -124,42 +131,55 @@ const Profile = ({ profile, setProfile }) => {
         <Form.Group widths="equal">
           <Form.Input
             fluid
-            name='serviceName'
-            value={userInfo.serviceName}
+            name='name'
+            value={serviceInfo.name}
             onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-first-name"
             label="Service"
             placeholder="Service"
           />
-</Form.Group>
-</Form>
-<Form>
+        </Form.Group>
+      </Form>
+      <Form>
+        <Form.Group widths="equal">
+          <Form.Input
+            fluid
+            name='description'
+            value={serviceInfo.description}
+            onChange={handleInputChange}
+            id="form-subcomponent-shorthand-input-first-name"
+            label="Service"
+            placeholder="Explain in detail what your skill/service is.."
+          />
+        </Form.Group>
+      </Form>
+      <Form>
+        <Form.Group widths="equal">
+          <Form.Input
+            fluid
+            name='price'
+            value={serviceInfo.price}
+            onChange={handleInputChange}
+            id="form-subcomponent-shorthand-input-first-name"
+            label="ServiceCost"
+            type = "number"
+            placeholder="how much willl your service cost"
+          />
+        </Form.Group>
+      </Form>
+      {/* <Form>
       <Form.Group widths="equal">
         <Form.Input
           fluid
-          name='serviceDescription'
-          value={userInfo.serviceDescription}
-          onChange={handleInputChange}
-          id="form-subcomponent-shorthand-input-first-name"
-          label="Service"
-          placeholder="Explain in detail what your skill/service is.."
-        />
-</Form.Group>
-</Form>
-<Form>
-      <Form.Group widths="equal">
-        <Form.Input
-          fluid
-          name='price'
-          value={userInfo.price}
+          name='category'
+          value={serviceInfo.category}
           onChange={handleInputChange}
           id="form-subcomponent-shorthand-input-first-name"
           label="ServiceCost"
           placeholder="how much willl your service cost"
         />
 </Form.Group>
-</Form>
-
+</Form> */}
 
 
 
@@ -173,29 +193,31 @@ const Profile = ({ profile, setProfile }) => {
         <Label>.00</Label>
       </Input> */}
       <Button inverted color="green" icon onClick={() => {
-      addSkillButton()
-        }}>
+        addSkillButton()
+      }}>
         <Icon name="dollar" />
         Add it!
         <Icon name="dollar" />
       </Button>
 
       {currentUser ? (
-          <div>
-                {/* <ProfileCard>test</ProfileCard> */}
-            <h2>{currentUser.firstName} {currentUser.lastName} </h2>
-            <h2>{currentUser.description} </h2>
-            <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
-            <h2>{currentUser.servicePrice}</h2>
 
-          </div>
-        ) : (
+        <div>
+          {/* <ProfileCard>test</ProfileCard> */}
+          <h2>{currentUser.firstName} {currentUser.lastName} </h2>
+          <h2>{currentUser.description} </h2>
+          <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
+          <h2>{currentUser.servicePrice}</h2>
 
-          <div>
 
-            <h1> no user info</h1>
-          </div>
-        )}
+        </div>
+      ) : (
+
+        <div>
+
+          <h1> no user info</h1>
+        </div>
+      )}
     </div>
 
 
