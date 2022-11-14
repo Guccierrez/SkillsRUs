@@ -4,7 +4,9 @@ import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import {currentSkill} from "../../pages/Detail";
 import {Button, Card} from "semantic-ui-react";
+
 function SkillItem(item) {
   const [state, dispatch] = useStoreContext();
 
@@ -13,6 +15,7 @@ function SkillItem(item) {
     name,
     _id,
     price,
+    
     quantity
   } = item;
 
@@ -58,7 +61,7 @@ function SkillItem(item) {
     <Button onClick={addToCart} inverted color="inverted red">Add to cart</Button>
     </Card.Content>
   </Card>
-
+   
 </div>
   );
 }

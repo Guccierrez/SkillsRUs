@@ -7,7 +7,7 @@ import { QUERY_SKILLS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import spinner from '../../assets/spinner.gif';
 
-function SkillList() {
+function SkillList({profile, setProfile}) {
   const [state, dispatch] = useStoreContext();
 
   const { currentCategory } = state;
@@ -45,17 +45,18 @@ function SkillList() {
 
   return (
     <div className="my-2">
-      <h2>Our Skills:</h2>
+      <h2>{profile?.firstName ? profile.firstName + "'s" : "Our"} Skills:</h2>
       {state.skills.length ? (
         <div className="flex-row">
-          {filterSkills().map((skill) => (
+          {state.skills.map((skill)=> (
+          // {filterSkills().map((skill) => (
             <SkillItem
-              key={skill._id}
-              _id={skill._id}
-              image={skill.image}
-              name={skill.name}
-              price={skill.price}
-              quantity={skill.quantity}
+              key={skill?._id}
+              _id={skill?._id}
+              image={skill?.image}
+              name={skill?.name}
+              price={skill?.price}
+              quantity={skill?.quantity}
             />
           ))}
         </div>
