@@ -45,7 +45,7 @@ function SkillList({profile, setProfile}) {
 
   return (
     <div className="my-2">
-      <h2 style={{ color:"grey", paddingLeft:150}}>{profile?.firstName ? profile.firstName + "'s" : "Our"} Skills:</h2>
+      <h2 style={{ color:"black", paddingLeft:150}}>{profile?.firstName ? profile.firstName + "'s" : "Our"} Skills:</h2>
       {state.skills.length ? (
         <div className="flex-row" style={{justifyContent:"center"}}>
           {state.skills.map((skill)=> (
