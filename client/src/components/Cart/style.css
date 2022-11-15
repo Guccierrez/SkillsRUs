@@ -22,9 +22,9 @@
 .cart .close {
   position: absolute;
   top: .5rem;
-  right: .5rem;
+  /* right: .5rem; */
   cursor: pointer;
-  color: var(--tertiary);
+  /* color: var(--tertiary); */
 }
 
 .cart .close:hover {
@@ -34,10 +34,10 @@
 .cart-closed {
   position: fixed;
   top: 2%;
-  right: 1%;
+  right: 2%;
   font-size: 2rem;
   cursor: pointer;
-  background-color: var(--secondary);
+  /* background-color: var(--secondary); */
   border-radius: 50%;
   padding: .25rem;
   width: 50px;
@@ -45,7 +45,9 @@
 }
 
 .cart-closed:hover {
-  transform: rotate(8deg);
+  /* transform: rotate(.85turn); */
+  transform: rotate(.25turn);
+  /* transform: translate3d(12px, 50%, 3em); */
 }
 
 .cart img {
