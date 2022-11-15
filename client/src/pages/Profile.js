@@ -72,14 +72,14 @@ const Profile = ({ profile, setProfile }) => {
     } catch (err) {
       console.error(err);
     }
-   
+
 
   }
 
   
 
   return (
-
+<div>
    <div style={{ display: 'flex',justifyContent: "center"}}>
    <div style={{width:"500px"}}>
 
@@ -107,9 +107,9 @@ const Profile = ({ profile, setProfile }) => {
         </Form.Group>
       </Form>
       <Form success>
-        <Form.Input style={{width:"335px"}}
+        <Form.Input
           name='userDescription'
-          value={userInfo.userDescription}
+          value={userInfo.description}
           onChange={handleInputChange}
           label="User description"
           placeholder="Brief description of yourself and the service(s) you offer..."
@@ -173,7 +173,22 @@ const Profile = ({ profile, setProfile }) => {
           />
         </Form.Group>
       </Form>
-      {/* <ImageUploader></ImageUploader> */}
+
+      <Form>
+        <Form.Group widths="equal">
+          <Form.Input
+          style={{width:"335px"}}
+            fluid
+            name='image'
+            value={serviceInfo.image}
+            onChange={handleInputChange}
+            id="form-subcomponent-shorthand-input-first-name"
+            label="Image of your Skill/Service"
+            placeholder="Add image"
+          />
+        </Form.Group>
+      </Form>
+      
 
       <Button inverted color="green" icon onClick={() => {
         addSkillButton()
@@ -181,8 +196,10 @@ const Profile = ({ profile, setProfile }) => {
         <Icon name="dollar" />
         Add it!
         <Icon name="dollar" />
+
       </Button>
-      <SkillList />
+      
+
 
 </div>
 
@@ -190,7 +207,6 @@ const Profile = ({ profile, setProfile }) => {
 
 
         <div>
-          {/* <ProfileCard>test</ProfileCard> */}
           <h2>{currentUser.firstName} {currentUser.lastName} </h2>
           <h2>{currentUser.userDescription} </h2>
           <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
@@ -205,7 +221,14 @@ const Profile = ({ profile, setProfile }) => {
           <h1> no user info</h1>
         </div>
       )}
+  
     </div>
+    
+    <SkillList />
+    
+</div>
+
+
 
 
   );
