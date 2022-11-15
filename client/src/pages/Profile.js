@@ -198,7 +198,7 @@ const Profile = ({ profile, setProfile }) => {
         <Icon name="dollar" />
 
       </Button>
-      <SkillList />
+      
 
 
 </div>

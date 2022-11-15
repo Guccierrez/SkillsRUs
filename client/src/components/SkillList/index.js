@@ -10,7 +10,7 @@ import spinner from '../../assets/spinner.gif';
 function SkillList({profile, setProfile}) {
   const [state, dispatch] = useStoreContext();
 
-  const { currentCategory } = state;
+  // const { currentCategory } = state;
 
   const { loading, data } = useQuery(QUERY_SKILLS);
 
@@ -33,19 +33,19 @@ function SkillList({profile, setProfile}) {
     }
   }, [data, loading, dispatch]);
 
-  function filterSkills() {
-    if (!currentCategory) {
-      return state.skills;
-    }
+  // function filterSkills() {
+  //   if (!currentCategory) {
+  //     return state.skills;
+  //   }
 
-    return state.skills.filter(
-      (skill) => skill.category._id === currentCategory
-    );
-  }
+  //   return state.skills.filter(
+  //     (skill) => skill.category._id === currentCategory
+  //   );
+  // }
 
   return (
     <div className="my-2">
-      <h2 style={{paddingLeft:150}}>{profile?.firstName ? profile.firstName + "'s" : "Our"} Skills:</h2>
+      <h2 style={{ color:"grey", paddingLeft:150}}>{profile?.firstName ? profile.firstName + "'s" : "Our"} Skills:</h2>
       {state.skills.length ? (
         <div className="flex-row" style={{justifyContent:"center"}}>
           {state.skills.map((skill)=> (

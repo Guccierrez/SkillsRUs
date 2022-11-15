@@ -35,17 +35,9 @@ function Nav() {
             </a>
           </li>
 
-          <li className="mx-1">
-            <a href="/orderHistory">
-              <Button inverted color="olive">
-                {/* <Icon name="shopping cart"/> */}
-                view cart
-                {/* <Icon/> */}
-              </Button>
-            </a>
-          </li>
+         
 
-          <li className="mx-1">
+          {/* <li className="mx-1">
             <Link to="/orderHistory">
               <Button inverted color="yellow" position="right">
                 <Icon name="ordered list"/>
@@ -53,7 +45,7 @@ function Nav() {
                 <Icon/>
               </Button>
             </Link>
-          </li>
+          </li> */}
           <li style={styles.logout}>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
