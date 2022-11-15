@@ -57,6 +57,8 @@ const Profile = ({ profile, setProfile }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
+    console.log(name)
+    console.log(value)
     setuserInfo({ ...userInfo, [name]: value })
     setServiceInfo({ ...serviceInfo, [name]: value })
   }

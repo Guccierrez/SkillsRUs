@@ -33,7 +33,7 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    skills(category: ID, name: String): [Skill]
+    skills(category: ID, name: String, image: String): [Skill]
     skill(_id: ID!): Skill
     user: User
   
