@@ -31,6 +31,7 @@ export const ADD_SKILL =gql`
     description
     name
     price
+    image
    
   }
 }

@@ -6,8 +6,8 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 import { Button, Card, CardDescription, Icon } from "semantic-ui-react";
-// import { REMOVE_SKILL } from "../utils/mutations";
-// import { useMutation } from '@apollo/client';
+import { REMOVE_SKILL } from "../../utils/mutations";
+import { useMutation } from '@apollo/client';
 
 
 function SkillItem(item) {
@@ -23,7 +23,7 @@ function SkillItem(item) {
   } = item;
 
   const { cart } = state;
-  // const [removeSkill, { err }] = useMutation(REMOVE_SKILL);
+  const [removeSkill, { err }] = useMutation(REMOVE_SKILL);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id);
@@ -47,17 +47,17 @@ function SkillItem(item) {
   }
 
     
-    const removeSkillButton = (e) => {
+    const removeSkillButton = async (skillId) => {
       //fire off mutation hook here
-      item.remove()
-      /* try {
-        serviceInfo.price = parseInt(serviceInfo.price)
+    
+       try {
+      //   serviceInfo.price = parseInt(serviceInfo.price)
         const { data } = await removeSkill({
-          variables: { ...serviceInfo },
+          variables: { skillId: skillId },
         });
       } catch (err) {
         console.error(err);
-      } */
+      } 
       
   
     }
@@ -84,7 +84,7 @@ function SkillItem(item) {
             Add to cart
             {/* <Icon/> */}
           </Button>
-          <Button onClick={removeSkillButton} inverted color="inverted red">
+          <Button onClick={( )=> removeSkillButton(_id)} inverted color="inverted red">
             <Icon name="trash alternate"/>
             Remove skill
             <Icon/>
