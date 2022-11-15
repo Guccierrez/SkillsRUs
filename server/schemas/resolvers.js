@@ -43,7 +43,55 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
   
-   
+    // order: async (parent, { _id }, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user._id).populate({
+    //       path: 'orders.skills',
+    //       populate: 'category'
+    //     });
+
+    //     return user.orders.id(_id);
+    //   }
+
+    //   throw new AuthenticationError('Not logged in');
+    // },
+    // checkout: async (parent, args, context) => {
+    //   const url = new URL(context.headers.referer).origin;
+    //   const order = new Order({ skills: args.skills });
+    //   const line_items = [];
+
+    //   const { skills } = await order.populate('skills');
+
+    //   for (let i = 0; i < skills.length; i++) {
+    //     const skill = await stripe.skills.create({
+    //       name: skills[i].name,
+    //       description: skills[i].description,
+    //       images: [`${url}/images/${skills[i].image}`]
+    //     });
+
+    //     const price = await stripe.prices.create({
+    //       skill: skill.id,
+    //       unit_amount: skills[i].price * 100,
+    //       currency: 'usd',
+    //     });
+
+    //     line_items.push({
+    //       price: price.id,
+    //       quantity: 1
+    //     });
+    //   }
+
+    //   const session = await stripe.checkout.sessions.create({
+    //     payment_method_types: ['card'],
+    //     line_items,
+    //     mode: 'payment',
+    //     success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+    //     cancel_url: `${url}/`
+    //   });
+
+    //   return { session: session.id };
+    // }
+
   },
   Mutation: {
 
