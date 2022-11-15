@@ -181,7 +181,7 @@ const Profile = ({ profile, setProfile }) => {
         <Icon name="dollar" />
         Add it!
         <Icon name="dollar" />
-      </Button>'
+      </Button>
       <SkillList />
 
 </div>
