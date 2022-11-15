@@ -138,7 +138,7 @@ const resolvers = {
       if (context.user) {
         return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { skills: {skillId: args.skillId} } },
+          { $pull: { skills: args.skillId} },
           { new: true }
         );
       }
