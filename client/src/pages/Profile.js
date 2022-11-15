@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/client';
 import { useStoreContext } from '../utils/GlobalState';
 import { UPDATE_SKILLS } from '../utils/actions';
 import ProfileCard from "../components/profileCard";
+import SkillList from "../components/SkillList";
 import { ADD_SKILL } from "../utils/mutations";
 //import the mutation from your utils
 //import usemutation hook from apollo
@@ -78,8 +79,10 @@ const Profile = ({ profile, setProfile }) => {
   }
 
   return (
+
    <div style={{ display: 'flex',justifyContent: "center"}}>
    <div style={{width:"500px"}}>
+
       <h1>Profile</h1>
       <Form>
         <Form.Group widths="equal" style={{width:"350px"}}>
@@ -177,17 +180,21 @@ const Profile = ({ profile, setProfile }) => {
         <Icon name="dollar" />
         Add it!
         <Icon name="dollar" />
-      </Button>
+      </Button>'
+      <SkillList />
 
 </div>
 
       {currentUser ? (
+
+
         <div>
           {/* <ProfileCard>test</ProfileCard> */}
           <h2>{currentUser.firstName} {currentUser.lastName} </h2>
           <h2>{currentUser.userDescription} </h2>
           <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
           <h2>{currentUser.servicePrice}</h2>
+
 
         </div>
       ) : (

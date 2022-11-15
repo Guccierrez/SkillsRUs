@@ -13,46 +13,54 @@ import {
   Select,
   TextArea,
 } from "semantic-ui-react";
-
+const styles = {
+  logout: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+};
 
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-
-  
-
-        
         <ul className="flex-row">
           <li className="mx-1">
             <a href="/me">
               <Button inverted color="blue">
+                <Icon name="user"/>
                 Profile
-                </Button>
+                <Icon/>
+              </Button>
             </a>
           </li>
 
-          
           <li className="mx-1">
             <a href="/orderHistory">
-              <Button inverted color="red" >
+              <Button inverted color="olive">
+                {/* <Icon name="shopping cart"/> */}
                 view cart
-                </Button>
+                {/* <Icon/> */}
+              </Button>
             </a>
           </li>
 
           <li className="mx-1">
             <Link to="/orderHistory">
-              <Button inverted color="yellow">
+              <Button inverted color="yellow" position="right">
+                <Icon name="ordered list"/>
                 Order History
-                </Button>
-           </Link>
+                <Icon/>
+              </Button>
+            </Link>
           </li>
-          <li className="mx-1" position="right">
+          <li style={styles.logout}>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
-              <Button  inverted color="red">
-              Logout
+              <Button inverted color="red" >
+                <Icon name="log out"/>
+                Logout
+                <Icon />
               </Button>
             </a>
           </li>
@@ -76,10 +84,11 @@ function Nav() {
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag">
-            💰
-          </span>
-          SkillsRUs
+          <Button inverted color="teal" size="large">
+            <Icon name="home" size="large" />
+            SkillsRUs
+            <Icon />
+          </Button>
         </Link>
       </h1>
 
