@@ -20,6 +20,7 @@ import {
   Radio,
   Select,
   TextArea,
+  Card,
 } from "semantic-ui-react";
 
 
@@ -74,6 +75,10 @@ const Profile = ({ profile, setProfile }) => {
     }
 
 
+  }
+
+  const removeSkillButton = async () => {
+    Card.remove()
   }
 
   
@@ -199,6 +204,7 @@ const Profile = ({ profile, setProfile }) => {
 
       </Button>
       
+
 
 
 </div>

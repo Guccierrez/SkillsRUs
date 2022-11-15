@@ -44,21 +44,24 @@ function SkillItem(item) {
       });
       idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
     }
+  }
 
-    // const removeSkillButton = async (e) => {
-    //   //fire off mutation hook here
-    //   try {
-    //     serviceInfo.price = parseInt(serviceInfo.price)
-    //     const { data } = await removeSkill({
-    //       variables: { ...serviceInfo },
-    //     });
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
+    
+    const removeSkillButton = (e) => {
+      //fire off mutation hook here
+      item.remove()
+      /* try {
+        serviceInfo.price = parseInt(serviceInfo.price)
+        const { data } = await removeSkill({
+          variables: { ...serviceInfo },
+        });
+      } catch (err) {
+        console.error(err);
+      } */
       
   
-    // }
-  };
+    }
+  
 
   return (
     <div>
@@ -76,18 +79,17 @@ function SkillItem(item) {
           </Card.Meta>
         </Card.Content>
         <Card.Content extra>
-          <Button onClick={addToCart} inverted color="inverted red">
+          <Button onClick={addToCart} inverted color="green">
             {/* <Icon name="in cart"/> */}
             Add to cart
             {/* <Icon/> */}
           </Button>
-          {/* <Button inverted color="green" icon onClick={() => {
-        removeSkillButton()
-      }}>
-        <Icon name="dollar" />
-        Add it!
-        <Icon name="dollar" />
-      </Button> */}
+          <Button onClick={removeSkillButton} inverted color="inverted red">
+            <Icon name="trash alternate"/>
+            Remove skill
+            <Icon/>
+          </Button>
+        
         </Card.Content>
 
       </Card>
