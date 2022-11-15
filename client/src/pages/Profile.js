@@ -204,7 +204,7 @@ const Profile = ({ profile, setProfile }) => {
 
       </Button>
       
-      {/* <SkillList /> */}
+
 
 
 </div>

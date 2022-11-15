@@ -10,6 +10,16 @@ import { idbPromise } from '../../utils/helpers';
 import {
   Button,
 } from "semantic-ui-react";
+
+
+
+const styles = {
+  h2:{
+   color: "grey"
+  },
+  
+};
+
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
 
@@ -45,7 +55,7 @@ function CategoryMenu() {
 
   return (
     <div>
-      <h2>Choose a Category:</h2>
+      <h2 style={styles.h2}>Choose a Category:</h2>
       {categories.map((item) => (
         <Button  inverted color="blue"
           key={item._id}
