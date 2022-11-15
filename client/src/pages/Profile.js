@@ -2,11 +2,11 @@ import { React, useState } from "react";
 import { useMutation } from '@apollo/client';
 import { useStoreContext } from '../utils/GlobalState';
 import { UPDATE_SKILLS } from '../utils/actions';
-import ProfileCard from "../components/profileCard";
+
 import SkillList from "../components/SkillList";
 import { ADD_SKILL } from "../utils/mutations";
 
-import ImageUploader from "../components/imageDrop";
+
 
 
 import {
@@ -42,6 +42,7 @@ const Profile = ({ profile, setProfile }) => {
  
   })
   const [addSkill, { error }] = useMutation(ADD_SKILL);
+  
   const currentUser = JSON.parse(localStorage.getItem("userInfo"))
 
 
@@ -71,12 +72,11 @@ const Profile = ({ profile, setProfile }) => {
     } catch (err) {
       console.error(err);
     }
-    // dispatch({
-    //   type: UPDATE_SKILLS,
-    //   skills: [...state.skills, {serviceName, serviceDescription, price}]
-    // });
+   
 
   }
+
+  
 
   return (
 
@@ -181,7 +181,7 @@ const Profile = ({ profile, setProfile }) => {
         <Icon name="dollar" />
         Add it!
         <Icon name="dollar" />
-      </Button>'
+      </Button>
       <SkillList />
 
 </div>
