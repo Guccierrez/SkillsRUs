@@ -36,45 +36,12 @@ export const ADD_SKILL =gql`
 }
 `;
 
-// export const QUERY_SKILL = gql`
-//   query Skill($id: ID!) {
-//   skill(_id: $id) {
-//     _id
-//     category {
-//       _id
-//       name
-//     }
-//     description
-//     name
-//     image
-//     price
-//   }
-// }
-// `;
+export const REMOVE_SKILL =gql`
+mutation RemoveSkill($skillId: ID) {
+  removeSkill(skillId: $skillId) {
+    name
+  }
+}
+`;
 
-
-// export const QUERY_SKILLS = gql`
-//  query Skills($category: ID, $name: String) {
-//   skills(category: $category, name: $name) {
-//     _id
-//     category {
-//       _id
-//       name
-//     }
-//     description
-//     image
-//     name
-//     price
-//   }
-// }
-// `;
-
-// export const QUERY_CATEGORIES = gql`
-//  query Categories {
-//   categories {
-//     _id
-//     name
-//   }
-// }
-// `;
 

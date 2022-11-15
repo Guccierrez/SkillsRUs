@@ -5,8 +5,8 @@ import { UPDATE_SKILLS } from '../utils/actions';
 import ProfileCard from "../components/profileCard";
 import SkillList from "../components/SkillList";
 import { ADD_SKILL } from "../utils/mutations";
-//import the mutation from your utils
-//import usemutation hook from apollo
+
+import ImageUploader from "../components/imageDrop";
 
 
 import {
@@ -173,6 +173,7 @@ const Profile = ({ profile, setProfile }) => {
           />
         </Form.Group>
       </Form>
+      {/* <ImageUploader></ImageUploader> */}
 
       <Button inverted color="green" icon onClick={() => {
         addSkillButton()
