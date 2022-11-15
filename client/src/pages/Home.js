@@ -8,7 +8,7 @@ const Home = (props) => {
   return (
     <div style={{ 
       // backgroundRepeat: "no-repeat",
-      backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHL2US5r0QaHyoCwVQ8JsTZjXwPitMXZnxyQ&usqp=CAU")` 
+      backgroundColor: "grey"
     }} width="100%" height="100%">
     <div className="container" >
       <CategoryMenu />
