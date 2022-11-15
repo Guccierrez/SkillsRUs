@@ -9,6 +9,7 @@ import spinner from '../../assets/spinner.gif';
 
 function SkillList({profile, setProfile}) {
   const [state, dispatch] = useStoreContext();
+  console.log(state)
 
   // const { currentCategory } = state;
 

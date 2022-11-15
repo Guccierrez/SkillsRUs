@@ -62,12 +62,14 @@ function SkillItem(item) {
   
     }
   
-
+// let imageCheck = image.includes("http")
+// console.log(imageCheck)
   return (
     <div>
       <Card style={{ width: "24rem", margin: "2rem", height: "350px" }}>
         <Link to={`/skills/${_id}`}>
-          <img alt={name} src={`/images/${image}`} />
+          {/* {imageCheck ? <img alt={name} src={`/image/${image}`} /> : <img alt={name} src={`${image}`} />} */}
+          <img alt={name} src={`${image}`}/>
         </Link>
         <Card.Content>
           <Card.Header>

@@ -1,20 +1,18 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_SKILLS = gql`
-  query getSkills($category: ID) {
-    skills(category: $category) {
-      _id
-      name
-      description
-      price
-      image
-      category {
-        _id
-      }
-    }
-  }
-`;
 
+
+export const QUERY_SKILLS = gql`
+query Query($id: ID!) {
+  skill(_id: $id) {
+    _id
+    image
+    description
+    name
+    price
+  }
+}
+`;
 export const QUERY_CHECKOUT = gql`
   query getCheckout($skills: [ID]!) {
     checkout(skills: $skills) {
