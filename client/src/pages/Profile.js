@@ -39,7 +39,7 @@ const Profile = ({ profile, setProfile }) => {
     name: "",
     price: parseInt(0),
     description: "",
-    // category:"636e78bab89b0b65cd19f8b0",
+ 
   })
   const [addSkill, { error }] = useMutation(ADD_SKILL);
   const currentUser = JSON.parse(localStorage.getItem("userInfo"))
@@ -79,12 +79,13 @@ const Profile = ({ profile, setProfile }) => {
   }
 
   return (
-    <div>
-      
+
+   <div style={{ display: 'flex',justifyContent: "center"}}>
+   <div style={{width:"500px"}}>
 
       <h1>Profile</h1>
       <Form>
-        <Form.Group widths="equal">
+        <Form.Group widths="equal" style={{width:"350px"}}>
           <Form.Input
             fluid
             name='firstName'
@@ -106,9 +107,9 @@ const Profile = ({ profile, setProfile }) => {
         </Form.Group>
       </Form>
       <Form success>
-        <Form.Input
-          name='description'
-          value={userInfo.description}
+        <Form.Input style={{width:"335px"}}
+          name='userDescription'
+          value={userInfo.userDescription}
           onChange={handleInputChange}
           label="User description"
           placeholder="Brief description of yourself and the service(s) you offer..."
@@ -132,25 +133,27 @@ const Profile = ({ profile, setProfile }) => {
       <Form>
         <Form.Group widths="equal">
           <Form.Input
+          style={{width:"335px"}}
             fluid
             name='name'
             value={serviceInfo.name}
             onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-first-name"
-            label="Service"
-            placeholder="Service"
+            label="Skill/Service Name"
+            placeholder="Skill/Service Name"
           />
         </Form.Group>
       </Form>
       <Form>
         <Form.Group widths="equal">
           <Form.Input
+          style={{width:"335px"}}
             fluid
             name='description'
             value={serviceInfo.description}
             onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-first-name"
-            label="Service"
+            label="Skill/Service Description"
             placeholder="Explain in detail what your skill/service is.."
           />
         </Form.Group>
@@ -158,42 +161,19 @@ const Profile = ({ profile, setProfile }) => {
       <Form>
         <Form.Group widths="equal">
           <Form.Input
+          style={{width:"335px"}}
             fluid
             name='price'
             value={serviceInfo.price}
             onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-first-name"
-            label="ServiceCost"
+            label="Service Cost"
             type = "number"
             placeholder="how much willl your service cost"
           />
         </Form.Group>
       </Form>
-      {/* <Form>
-      <Form.Group widths="equal">
-        <Form.Input
-          fluid
-          name='category'
-          value={serviceInfo.category}
-          onChange={handleInputChange}
-          id="form-subcomponent-shorthand-input-first-name"
-          label="ServiceCost"
-          placeholder="how much willl your service cost"
-        />
-</Form.Group>
-</Form> */}
 
-
-
-
-      {/* <Input labelPosition="right" type="text" 
-       name='amount'
-       value={serviceInfo.amount}
-       onChange={handleServiceChange}>
-        <Label basic>$</Label>
-        <input />
-        <Label>.00</Label>
-      </Input> */}
       <Button inverted color="green" icon onClick={() => {
         addSkillButton()
       }}>
@@ -203,13 +183,15 @@ const Profile = ({ profile, setProfile }) => {
       </Button>'
       <SkillList />
 
+</div>
+
       {currentUser ? (
 
 
         <div>
           {/* <ProfileCard>test</ProfileCard> */}
           <h2>{currentUser.firstName} {currentUser.lastName} </h2>
-          <h2>{currentUser.description} </h2>
+          <h2>{currentUser.userDescription} </h2>
           <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
           <h2>{currentUser.servicePrice}</h2>
 
