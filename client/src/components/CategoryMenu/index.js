@@ -15,7 +15,7 @@ import {
 
 const styles = {
   h2:{
-   color: "grey"
+   color: "black"
   },
   
 };
