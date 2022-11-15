@@ -23,6 +23,13 @@ import {
   Card,
 } from "semantic-ui-react";
 
+const styles = {
+  h:{
+   color: "grey"
+  },
+  
+};
+
 
 
 const Profile = ({ profile, setProfile }) => {
@@ -84,12 +91,15 @@ const Profile = ({ profile, setProfile }) => {
   
 
   return (
-<div>
+<div style={{ 
+     
+      backgroundColor: "grey" 
+    }} width="1000%" height="1000%">
    <div style={{ display: 'flex',justifyContent: "center"}}>
    <div style={{width:"500px"}}>
 
-      <h1>Profile</h1>
-      <Form>
+      <h1  >Profile</h1>
+      <Form style={styles.h} >
         <Form.Group widths="equal" style={{width:"350px"}}>
           <Form.Input
             fluid

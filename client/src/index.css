@@ -1,9 +1,10 @@
 :root {
   --primary: #2151A1;
   --secondary: #EB1933;
-  --tertiary: #e7eae2;
+  --tertiary: #474649;
   --light: #fafafa;
   --dark: #0a0a0b;
+  
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
@@ -33,7 +34,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
-  color: var(--dark);
+  color: var(--tertiary);
 }
 
 h1,
@@ -216,12 +217,9 @@ ul {
   list-style-type: none;
   }
 
-<<<<<<< HEAD
-=======
 
 
 
->>>>>>> 21f54f039d99ad59885a1bc8888a2deecb8d2976
 
 @media screen and (max-width: 768px) {
   .card {
