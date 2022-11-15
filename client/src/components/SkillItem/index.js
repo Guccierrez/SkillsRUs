@@ -5,7 +5,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import { currentSkill } from "../../pages/Detail";
-import { Button, Card, Icon } from "semantic-ui-react";
+import { Button, Card, CardDescription, Icon } from "semantic-ui-react";
 
 function SkillItem(item) {
   const [state, dispatch] = useStoreContext();
@@ -15,7 +15,7 @@ function SkillItem(item) {
     name,
     _id,
     price,
-
+    CardDescription,
     quantity,
   } = item;
 
@@ -50,7 +50,7 @@ function SkillItem(item) {
         </Link>
         <Card.Content>
           <Card.Header>
-            {" "}
+            {CardDescription}
             <p>{name}</p>
           </Card.Header>
           <Card.Meta>
