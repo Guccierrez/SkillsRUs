@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { useMutation } from '@apollo/client';
 import { useStoreContext } from '../utils/GlobalState';
 import { UPDATE_SKILLS } from '../utils/actions';
+import ProfileCard from "../components/profileCard";
 import { ADD_SKILL } from "../utils/mutations";
 //import the mutation from your utils
 
@@ -74,6 +75,7 @@ const Profile = ({ profile, setProfile }) => {
 
   return (
     <div>
+      
       <h1>Profile</h1>
       <Form>
         <Form.Group widths="equal">
@@ -180,7 +182,7 @@ const Profile = ({ profile, setProfile }) => {
 
       {currentUser ? (
           <div>
-
+                <ProfileCard>test</ProfileCard>
             <h2>{currentUser.firstName} {currentUser.lastName} </h2>
             <h2>{currentUser.description} </h2>
             {/* <h2>{currentUser.service} {currentUser.serviceDescription}</h2>
@@ -201,3 +203,5 @@ const Profile = ({ profile, setProfile }) => {
 };
 
 export default Profile;
+
+

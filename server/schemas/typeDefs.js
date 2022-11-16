@@ -20,7 +20,7 @@ const typeDefs = gql`
     _id: ID
     name: String!
     email: String!
-    savedSkills: [Skill]
+    skills: [Skill]
     
   }
 
