@@ -4,12 +4,12 @@ import CategoryMenu from "../components/CategoryMenu";
 import Cart from "../components/Cart";
 
 
-const Home = () => {
+const Home = (props) => {
   return (
 
     <div className="container">
       <CategoryMenu />
-      <SkillList />
+      <SkillList {...props}/>
       <Cart />
   
     </div>
