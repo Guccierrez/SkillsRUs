@@ -81,18 +81,18 @@ const Profile = ({ profile, setProfile }) => {
         <Form.Group widths="equal">
           <Form.Input
             fluid
-            name='firstName'
-            value={userInfo.firstName}
-            onChange={handleInputChange}
+            // name='firstName'
+            // value={userInfo.firstName}
+            // onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-first-name"
             label="First name"
             placeholder="First name"
           />
           <Form.Input
             fluid
-            name='lastName'
-            value={userInfo.lastName}
-            onChange={handleInputChange}
+            // name='lastName'
+            // value={userInfo.lastName}
+            // onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-last-name"
             label="Last name"
             placeholder="Last name"
@@ -101,9 +101,9 @@ const Profile = ({ profile, setProfile }) => {
       </Form>
       <Form success>
         <Form.Input
-          name='description'
-          value={userInfo.description}
-          onChange={handleInputChange}
+          // name='description'
+          // value={userInfo.description}
+          // onChange={handleInputChange}
           label="User description"
           placeholder="Brief description of yourself and the service(s) you offer..."
         />
@@ -124,9 +124,9 @@ const Profile = ({ profile, setProfile }) => {
         <Form.Group widths="equal">
           <Form.Input
             fluid
-            // name='serviceName'
-            // value={userInfo.serviceName}
-            // onChange={handleInputChange}
+            name='serviceName'
+            value={userInfo.serviceName}
+            onChange={handleInputChange}
             id="form-subcomponent-shorthand-input-first-name"
             label="Service"
             placeholder="Service"
@@ -137,9 +137,9 @@ const Profile = ({ profile, setProfile }) => {
       <Form.Group widths="equal">
         <Form.Input
           fluid
-          // name='serviceDescription'
-          // value={userInfo.serviceDescription}
-          // onChange={handleInputChange}
+          name='serviceDescription'
+          value={userInfo.serviceDescription}
+          onChange={handleInputChange}
           id="form-subcomponent-shorthand-input-first-name"
           label="Service"
           placeholder="Explain in detail what your skill/service is.."
@@ -150,9 +150,9 @@ const Profile = ({ profile, setProfile }) => {
       <Form.Group widths="equal">
         <Form.Input
           fluid
-          // name='price'
-          // value={userInfo.price}
-          // onChange={handleInputChange}
+          name='price'
+          value={userInfo.price}
+          onChange={handleInputChange}
           id="form-subcomponent-shorthand-input-first-name"
           label="ServiceCost"
           placeholder="how much willl your service cost"
